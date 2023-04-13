@@ -1,0 +1,27 @@
+<application>
+    <url>url</url>
+    <users>
+        <user>
+            <type>user1</type>
+            <username>deneme@deneme.com</username>
+            <password>deneme</password>
+        </user>
+        <user>
+            <type>user2</type>
+            <username/>
+            <password/>
+        </user>
+    </users>
+    <browsers>
+        <browser>
+            <name>chrome</name>
+            <headless>false</headless>
+            <userDataDir/>
+        </browser>
+        <browser>
+            <name>edge</name>
+            <headless>false</headless>
+            <userDataDir/>
+        </browser>
+    </browsers>
+</application>
