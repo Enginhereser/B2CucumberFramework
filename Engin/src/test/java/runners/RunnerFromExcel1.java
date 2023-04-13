@@ -5,7 +5,7 @@ import io.cucumber.testng.CucumberOptions;
 import org.testng.annotations.BeforeTest;
 
 
-@CucumberOptions(
+/*@CucumberOptions(
         features = {"src/test/resources/features"},
         glue = {"stepdefs"},
         tags = "@WishList",
@@ -29,4 +29,4 @@ public class RunnerFromExcel1 extends AbstractTestNGCucumberTests {
     }
 
 
-}
+}*/

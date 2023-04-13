@@ -1,0 +1,59 @@
+{
+  "application": {
+    "url": "https://opencart.abstracta.us/",
+    "username": "deneme@deneme.com",
+    "password": "deneme"
+  },
+  "topmenu": {
+    "myaccount": {
+      "type": "xpath",
+      "locator": "//div[@id='top-links']//a[contains(.,'My Account')]"
+    },
+    "loginlink": {
+      "type": "xpath",
+      "locator": "//div[@id='top-links']//a[contains(.,'Login')]"
+    },
+    "wishlist": {
+      "type": "xpath",
+      "locator": "//div[@id='top-links']//a[contains(.,'Wish List')]"
+    }
+  },
+  "login": {
+    "username": {
+      "type": "id",
+      "locator": "input-email"
+    },
+    "password": {
+      "type": "id",
+      "locator": "input-password"
+    },
+    "submitbutton": {
+      "type": "xpath",
+      "locator": "//input[@value='Login']"
+    }
+  },
+  "account": {
+    "sitemapaccount": {
+      "type": "xpath",
+      "locator": "//ul[@class='breadcrumb']//a[.='Account']"
+    }
+  },
+  "search": {
+    "searchbox": {
+      "type": "css",
+      "locator": "#search input"
+    },
+    "searchbutton": {
+      "type": "css",
+      "locator": "#search button"
+    },
+    "searchcontainer": {
+      "type": "css",
+      "locator": "#product-search"
+    },
+    "successalert": {
+      "type": "css",
+      "locator": "div.alert.alert-success"
+    }
+  }
+}

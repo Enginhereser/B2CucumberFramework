@@ -1,6 +1,7 @@
 package stepdefs;
 
 import driver.Driver;
+import org.apache.poi.ss.usermodel.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -8,6 +9,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.io.FileInputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 public class BaseSteps {
 
@@ -122,6 +127,37 @@ public class BaseSteps {
         cart,
         wish,
         compare;
+    }
+
+    public List<String> getColValuesOf(String fileName,String page,int colNum){
+        try {
+            List<String> myList=new ArrayList<>();
+            FileInputStream fileInputStream=new FileInputStream(fileName);
+            Workbook workbook= WorkbookFactory.create(fileInputStream);
+            Sheet sheet = workbook.getSheetAt(0);
+            int rows = sheet.getPhysicalNumberOfRows();
+
+
+            int index=colNum-1;
+            if (index<0)index=0;
+            if (index>2) index=2;
+
+
+            for (int i = 0; i < rows; i++) {
+                Row row = sheet.getRow(i);
+                Cell cell = row.getCell(index);
+                String val = cell == null ? "" : cell.toString();
+                myList.add(val);
+
+            }
+            workbook.close();
+            fileInputStream.close();
+            myList.remove(0);
+            return myList;
+
+        }catch (Exception e){
+            throw new RuntimeException(e.getMessage());
+        }
     }
 
 }

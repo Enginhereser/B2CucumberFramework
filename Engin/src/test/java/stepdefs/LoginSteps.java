@@ -83,4 +83,39 @@ public class LoginSteps extends BaseSteps{
         click(pageObjects.loginFormSubmitButton);
 
     }
+    List<String> userName;
+    List<String> password;
+    List<String> login;
+
+    @When("user try to login with credential given in excel file name as {string}")
+    public void userTryToLoginWithCredentialGivenInExcelFileNameAs(String fileName) {
+        String file="src/test/resources/datafiles/"+fileName;
+        click(pageObjects.menuMyAccountLink);
+        click(pageObjects.menuLoginLink);
+        userName= getColValuesOf(file, "Sheet1", 1);
+       password = getColValuesOf(file, "Sheet1", 2);
+        login= getColValuesOf(file, "Sheet1", 3);
+
+        for (int i = 0; i < userName.size(); i++) {
+            if (login.get(i).equalsIgnoreCase("true")) {
+                sendkeys(pageObjects.loginFormUsername, userName.get(i));
+                sendkeys(pageObjects.loginFormPassword, password.get(i));
+                click(pageObjects.loginFormSubmitButton);
+                waitForVisibility(pageObjects.lSiteMapAccout);
+                click(pageObjects.columnRightLogoutLink);
+                driver.navigate().to("https://opencart.abstracta.us/index.php?route=account/login");
+            }else {
+                sendkeys(pageObjects.loginFormUsername, userName.get(i));
+                sendkeys(pageObjects.loginFormPassword, password.get(i));
+                click(pageObjects.loginFormSubmitButton);
+                waitForVisibility(pageObjects.loginFormWarningMessage);
+            }
+        }
+    }
+
+    @Then("login should be as in excel file")
+    public void loginShouldBeAsInExcelFile() {
+
+
+    }
 }

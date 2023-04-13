@@ -41,4 +41,8 @@ public class PageObjects {
 
     @FindBy(css = "div.alert.alert-success")
     public WebElement eAlertSuccess;
+    @FindBy(xpath = "//div[@class='list-group']//a[text()='Logout']")
+    public WebElement columnRightLogoutLink;
+    @FindBy(xpath = "//div[contains(text(), 'Warning')]")
+    public WebElement loginFormWarningMessage;
 }

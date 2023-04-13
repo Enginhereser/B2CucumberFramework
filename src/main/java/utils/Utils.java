@@ -10,7 +10,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebElement;
-import readers.json.MyJsonPojo;
+import readers.MyPojo;
+
 
 import java.io.*;
 import java.time.LocalDateTime;
@@ -168,7 +169,7 @@ public class Utils {
      * @param pojo parent'i  MyJsonPojo  olan pojo class'i
      * @return MyJsonPojo olarak return eder, islem sirasinda sub class'a cast edilmeli
      */
-    public static MyJsonPojo getPojo(String file, MyJsonPojo pojo){
+    public static MyPojo getPojo(String file, MyPojo pojo){
         ObjectMapper mapper = new ObjectMapper();
         try {
             return mapper.readValue(new FileReader(file), pojo.getClass());

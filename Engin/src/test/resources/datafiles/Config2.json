@@ -1,0 +1,27 @@
+{
+  "url": "https://opencart.abstracta.us/",
+  "username": "deneme@deneme.com",
+  "password": "deneme",
+  "takescreenshot": "true",
+
+  "types" : ["type1", "type2", "type3"],
+  "address" : {
+    "street": "street",
+    "number" : 12,
+    "city" : "Istanbul"
+  },
+  "users": [
+    {
+      "type": "user",
+      "valid": "true",
+      "username": "deneme@deneme.com",
+      "password": "deneme"
+    },
+    {
+      "type": "user",
+      "valid": "false",
+      "username": "deneme1@deneme.com",
+      "password": "deneme"
+    }
+  ]
+}
