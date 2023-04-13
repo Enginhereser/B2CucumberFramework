@@ -1,10 +1,12 @@
-package readers.json.Engin;
+package readers.json;
 
-public class Config1Pojo1 extends MyJSONPojo{
+public class Config1Pojo extends MyJsonPojo{
+    // pojo getter ve setter'i olan en basit java classlaridir
+    // Plain Old Java Objects
 
-   private String url;
-   private String username;
-   private String password;
+    private String url;
+    private String username;
+    private String password;
 
     public String getUrl() {
         return url;

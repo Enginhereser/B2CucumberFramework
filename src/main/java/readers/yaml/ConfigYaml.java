@@ -2,10 +2,13 @@ package readers.yaml;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
+import readers.MyPojo;
 
 @Getter
 @Setter
-public class ConfigYaml {
+@ToString
+public class ConfigYaml extends MyPojo {
 
     private Application application;
     private User user1;
@@ -15,12 +18,15 @@ public class ConfigYaml {
 
     @Getter
     @Setter
+    @ToString
     public class Application {
         private String url;
     }
 
+
     @Getter
     @Setter
+    @ToString
     public class User {
         private String username;
         private String password;
@@ -28,6 +34,7 @@ public class ConfigYaml {
 
     @Getter
     @Setter
+    @ToString
     public class Browser {
         private String name;
         private boolean headless;

@@ -1,6 +1,7 @@
 application:
   url: url
 
+
 user1:
   username: deneme@deneme.com
   password: deneme
@@ -8,7 +9,6 @@ user1:
 user2:
   username:
   password:
-
 
 chrome:
   name: chrome
