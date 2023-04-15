@@ -13,3 +13,8 @@ Feature: wishlist functionality
     When  user add "iMac" to the wishlist
     Then  success notification with "wish list!" should be visible
 
+  Scenario: wishlist TC 2
+    Given user search for "iMac"
+    When  user add "iMac" to the wishlist
+    Then  success notification with "wish list!" should be visible
+

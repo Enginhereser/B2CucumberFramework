@@ -1,8 +1,7 @@
-package _tempTest.pacPojo;
+package diger.pacPojo;
 
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 
 @Getter
 @Setter

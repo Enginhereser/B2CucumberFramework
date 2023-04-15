@@ -1,0 +1,19 @@
+---
+application:
+  url: "https://new.url1"
+users:
+  user1:
+    username: "deneme@deneme.com"
+    password: "deneme"
+  user2:
+    username: null
+    password: null
+browsers:
+  chrome:
+    name: "chrome"
+    headless: false
+    userDataDir: null
+  edge:
+    name: "edge"
+    headless: false
+    userDataDir: null

@@ -11,15 +11,14 @@ import readers.MyPojo;
 public class ConfigYaml extends MyPojo {
 
     private Application application;
-    private User user1;
-    private User user2;
-    private Browser chrome;
-    private Browser edge;
+    private Users users;
+    private Browsers browsers;
+
 
     @Getter
     @Setter
     @ToString
-    public class Application {
+    public static class Application {
         private String url;
     }
 
@@ -27,15 +26,32 @@ public class ConfigYaml extends MyPojo {
     @Getter
     @Setter
     @ToString
-    public class User {
-        private String username;
-        private String password;
+    public static class Users {
+        private User user1;
+        private User user2;
     }
 
     @Getter
     @Setter
     @ToString
-    public class Browser {
+    public static class User {
+        private String username;
+        private String password;
+    }
+
+
+    @Getter
+    @Setter
+    @ToString
+    public static class Browsers {
+        private Browser chrome;
+        private Browser edge;
+    }
+
+    @Getter
+    @Setter
+    @ToString
+    public static class Browser {
         private String name;
         private boolean headless;
         private String userDataDir;

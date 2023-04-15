@@ -183,10 +183,11 @@ public class Utils {
     }
 
     /**
-     * bu method okunacak .json dosyasini pojo.class'a map eder
-     * @param file okunacak json file
-     * @param pojo parent'i  MyJsonPojo  olan pojo class'i
-     * @return MyJsonPojo olarak return eder, islem sirasinda sub class'a cast edilmeli
+     * bu method Parent~i MzPojo olan .json ve .yaml dosyasini pojo.class'a map eder
+     * MyPojo tüm pojolarin parent'i olan abstract class'dir
+     * @param file okunacak .json ya da .yaml file
+     * @param pojo parent'i  MyPojo  olan pojo class'i
+     * @return MyPojo olarak return eder, islem sirasinda sub class'a cast edilmeli
      */
     public static MyPojo getPojo(String file, MyPojo pojo){
         String[] arr = file.split("[.]");
@@ -200,7 +201,36 @@ public class Utils {
                     ObjectMapper mapperYaml = new ObjectMapper(new YAMLFactory());
                     return mapperYaml.readValue(new FileReader(file), pojo.getClass());
                 default:
-                    return null;
+                    throw new RuntimeException(file + " is not .yaml or .json file");
+            }
+        } catch (IOException e) {
+            //return null;
+            throw new RuntimeException(e);
+        }
+    }
+
+
+    /**
+     * bu method okunacak .json dosyasini pojo.class'a map eder
+     * MyPojo tüm pojolarin parent'i olan abstract class'dir
+     * @param file okunacak json file
+     * @param pojo parent'i  MyPojo  olan pojo class'i
+     */
+    public static void writePojo(String file, MyPojo pojo){
+        String[] arr = file.split("[.]");
+        String fileType = arr[arr.length-1].toLowerCase();
+        try {
+            switch (fileType){
+                case "json":
+                    ObjectMapper mapperJson = new ObjectMapper();
+                    mapperJson.writeValue(new File(file), pojo);
+                    break;
+                case "yaml":
+                    ObjectMapper mapperYaml = new ObjectMapper(new YAMLFactory());
+                    mapperYaml.writeValue(new File(file), pojo);
+                    break;
+                default:
+                    throw new RuntimeException(file + " mapping error");
             }
         } catch (IOException e) {
             //return null;

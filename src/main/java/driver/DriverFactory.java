@@ -41,10 +41,12 @@ public class DriverFactory {
     public static WebDriver createFirefox(){
         WebDriverManager.firefoxdriver().setup();
         FirefoxOptions options = new FirefoxOptions();
+        /*
         PropertyReader pr = PropertyReader.read();
         for (String s : pr.get("firefox.options").split(",")) {
             options.addArguments(s.trim());
         }
+         */
         return new FirefoxDriver(options);
     }
 
