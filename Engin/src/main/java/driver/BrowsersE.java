@@ -1,6 +1,6 @@
 package driver;
 
-public enum Browsers {
+public enum BrowsersE {
     chrome,
     firefox,
     edge,

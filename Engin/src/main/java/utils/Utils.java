@@ -1,6 +1,6 @@
 package utils;
 
-import driver.Driver;
+import driver.DriverE;
 import org.apache.commons.io.FileUtils;
 import org.apache.poi.ss.usermodel.*;
 import org.json.simple.JSONObject;
@@ -33,7 +33,7 @@ public class Utils {
     public static void takeScreenShot(String fileName) {
         fileName = fileName + "_" + LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH-mm-ss"));
         String filePath = "test-output/screenshots/" + fileName + ".png";
-        TakesScreenshot scrShot = ((TakesScreenshot) Driver.getDriver());
+        TakesScreenshot scrShot = ((TakesScreenshot) DriverE.getDriver());
         File srcFile = scrShot.getScreenshotAs(OutputType.FILE);
         File destFile = new File(filePath);
         try {
@@ -67,7 +67,7 @@ public class Utils {
      * @return screenshot in byte[]
      */
     public static byte[] getScreenShotAsByte() {
-        return ((TakesScreenshot) Driver.getDriver()).getScreenshotAs(OutputType.BYTES);
+        return ((TakesScreenshot) DriverE.getDriver()).getScreenshotAs(OutputType.BYTES);
     }
 
     /**

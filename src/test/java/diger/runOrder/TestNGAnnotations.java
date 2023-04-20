@@ -18,15 +18,11 @@ public class TestNGAnnotations {
 
     }
 
-
-
     @AfterTest
     public void afterTest(){
         System.out.println("TestNG @AfterTest");
 
     }
-
-
 
     @AfterSuite
     public void afterSuite(){

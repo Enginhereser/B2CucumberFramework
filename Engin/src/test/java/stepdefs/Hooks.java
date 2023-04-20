@@ -1,6 +1,6 @@
 package stepdefs;
 
-import driver.Driver;
+import driver.DriverE;
 import io.cucumber.java.After;
 import io.cucumber.java.AfterStep;
 import io.cucumber.java.Scenario;
@@ -20,16 +20,14 @@ public class Hooks {
         if (scrShot) {
             if (takeScrOn.equalsIgnoreCase("fail")){
                 if (scenario.isFailed()) {
-                    byte[] screenshot = ((TakesScreenshot) Driver.getDriver()).getScreenshotAs(OutputType.BYTES);
+                    byte[] screenshot = ((TakesScreenshot) DriverE.getDriver()).getScreenshotAs(OutputType.BYTES);
                     scenario.attach(screenshot, "image/png", scenario.getName());
                 }
             }else{
-                byte[] screenshot = ((TakesScreenshot) Driver.getDriver()).getScreenshotAs(OutputType.BYTES);
+                byte[] screenshot = ((TakesScreenshot) DriverE.getDriver()).getScreenshotAs(OutputType.BYTES);
                 scenario.attach(screenshot, "image/png", scenario.getName());
             }
         }
-
-
 
     }
 
@@ -37,7 +35,7 @@ public class Hooks {
     @After(order = 0)
     public void after0(){
 
-        Driver.quitDriver();
+        DriverE.quitDriver();
     }
 }
 

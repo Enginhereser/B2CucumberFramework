@@ -15,7 +15,7 @@ import org.openqa.selenium.safari.SafariDriver;
 import org.openqa.selenium.safari.SafariOptions;
 import readers.property.PropertyReader;
 
-public class DriverFactory {
+public class DriverFactoryE {
 
     public static WebDriver createChrome(){
         WebDriverManager.chromedriver().setup();

@@ -5,9 +5,9 @@ import io.cucumber.testng.CucumberOptions;
 
 
 @CucumberOptions(
-        features = {"src/test/resources/features/login3Exel.feature"},
+        features = {"src/test/resources/features"},
         glue = {"stepdefs"},
-        tags = "@Excel"
+        tags = "@Test3"
         /*plugin = { "pretty",
                 "json:test-output/cucumber-reports/cucumber.json",
                 "html:test-output/cucumber-reports/cucumberreport.html",

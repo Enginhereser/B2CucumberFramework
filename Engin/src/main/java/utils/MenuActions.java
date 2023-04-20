@@ -1,6 +1,6 @@
 package utils;
 
-import driver.Driver;
+import driver.DriverE;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -26,8 +26,8 @@ public enum MenuActions {
     MenuActions(String name, By locator) {
         this.locator = locator;
         this.name = name;
-        driver = Driver.getDriver();
-        wait = Driver.getWait();
+        driver = DriverE.getDriver();
+        wait = DriverE.getWait();
     }
 
     public By getLocator() {

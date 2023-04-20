@@ -1,7 +1,7 @@
 package _tempTest;
 
 
-import driver.Driver;
+import driver.DriverE;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -19,13 +19,13 @@ public class TestMenu extends BaseSteps {
 
     @BeforeTest
     public void beforeTest(){
-        driver = Driver.getDriver();
-        wait = Driver.getWait();
+        driver = DriverE.getDriver();
+        wait = DriverE.getWait();
     }
 
     @AfterTest
     public void afterTest(){
-        Driver.quitDriver();
+        DriverE.quitDriver();
     }
 
     @Test

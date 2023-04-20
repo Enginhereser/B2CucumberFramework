@@ -6,6 +6,9 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import pageObjects.PageObjects;
 import readers.property.PropertyReader;
@@ -115,7 +118,30 @@ public class LoginSteps extends BaseSteps{
 
     @Then("login should be as in excel file")
     public void loginShouldBeAsInExcelFile() {
+        
 
 
+    }
+    List<WebElement> elements;
+    @When("Clean the Cart")
+    public void cleanTheCart() {
+        click(pageObjects.menuShopingCart);
+        elements= driver.findElements(By.xpath("//button[@data-original-title='Remove']"));
+        while (elements.size()>0){
+            int size=elements.size();
+            click(pageObjects.lRemoveButton);
+            By loc=By.xpath("//button[@data-original-title='Remove']");
+            wait.until(ExpectedConditions.numberOfElementsToBeLessThan(loc,size));
+            elements = driver.findElements(By.xpath("//button[@data-original-title='Remove']"));
+        }
+
+
+    }
+
+    @Then("Cart should be empty")
+    public void cartShouldBeEmpty() {
+        elements= driver.findElements(By.xpath("//button[@data-original-title='Remove']"));
+        Assert.assertEquals(elements.size(),0);
+        wait.until(ExpectedConditions.invisibilityOfAllElements(elements));
     }
 }

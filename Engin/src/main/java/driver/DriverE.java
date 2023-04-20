@@ -5,16 +5,20 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-import static driver.DriverFactory.*;
+import static driver.DriverFactoryE.*;
 
-public class Driver {
+public class DriverE {
     private static ThreadLocal<WebDriver> drivers = new ThreadLocal<>();
     private static ThreadLocal<WebDriverWait> waits = new ThreadLocal<>();
+    private static ThreadLocal<BrowsersE> browsers = new ThreadLocal<>();
 
     public static WebDriver getDriver(){
-        return getDriver(Browsers.chrome);
+        if (browsers.get()==null)
+            browsers.set(BrowsersE.chrome);
+        return getDriver(browsers.get());
     }
-    public static WebDriver getDriver(Browsers browser){
+    public static WebDriver getDriver(BrowsersE browser){
+        browsers.set(browser);
         if (drivers.get() == null){
             switch (browser){
                 case firefox:

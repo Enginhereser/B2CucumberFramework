@@ -20,7 +20,7 @@ public class RunnerFromExcel1 extends AbstractTestNGCucumberTests {
     public void befor(){
         String fileExcel="src/test/resources/datafiles/testCase.xlsx";
         String file="src/test/resources/features/testCaseFromExcel.feature";
-        creatFeatureFile1();
+        creatFeatureFile1(fileExcel,file);
     }
 
     private void creatFeatureFile1(String fileExcel,String feature) {

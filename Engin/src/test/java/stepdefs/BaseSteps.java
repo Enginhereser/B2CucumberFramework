@@ -1,6 +1,6 @@
 package stepdefs;
 
-import driver.Driver;
+import driver.DriverE;
 import org.apache.poi.ss.usermodel.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -20,9 +20,9 @@ public class BaseSteps {
     protected WebDriverWait wait;
 
     protected BaseSteps(){
-        driver = Driver.getDriver();
+        driver = DriverE.getDriver();
         //wait = new WebDriverWait(driver, Duration.ofSeconds(10), Duration.ofMillis(100));
-        wait = Driver.getWait();
+        wait = DriverE.getWait();
     }
 
     public void click(By locator){
@@ -32,18 +32,6 @@ public class BaseSteps {
 
 
     public void click(WebElement element){
-        //wait.until(ExpectedConditions.elementToBeClickable(element)).click();
-
-        /*
-        wait.until(driver1 -> {
-            try {
-                element.click();
-                return true;
-            }catch (Exception e1){
-                return false;
-            }
-        });
-         */
 
         wait.until(driver1 -> {
            try {
@@ -157,6 +145,40 @@ public class BaseSteps {
 
         }catch (Exception e){
             throw new RuntimeException(e.getMessage());
+        }
+    }
+    public void scrollIntoView(WebElement element){
+        ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();",element);
+    }
+    public void bekle(long secont){
+        try {
+            Thread.sleep(secont);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public WebElement asideMenu(String text){
+        WebElement element = driver.findElement(By.xpath("//aside [@id='column-left']/div/a[contains(text(),'"+text+"')]"));
+        return wait.until(ExpectedConditions.elementToBeClickable(element));
+    }
+    public void hover(WebElement element){
+        new Actions(driver)
+                .moveToElement(element).perform();
+    }
+
+    public List<WebElement> getMenuElements(){
+
+        return driver.findElements(By.xpath("//nav[@id='menu']//ul[@class='nav navbar-nav']/li//a"));
+    }
+    public void hoverClick(List<WebElement> elements){
+        //List<WebElement> elements = driver.findElements(locator);
+        for (WebElement element : elements) {
+            hover(element);
+            List<WebElement> elements1 = element.findElements(By.xpath(".//li"));
+            for (WebElement webElement : elements1) {
+                hover(webElement);
+            }
+
         }
     }
 

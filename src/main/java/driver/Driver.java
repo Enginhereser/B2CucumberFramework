@@ -16,11 +16,15 @@ import static driver.DriverFactory.*;
 public class Driver {
     private static ThreadLocal<WebDriver> drivers = new ThreadLocal<>();
     private static ThreadLocal<WebDriverWait> waits = new ThreadLocal<>();
+    private static ThreadLocal<Browsers> browsers = new ThreadLocal<>();
 
     public static WebDriver getDriver(){
-        return getDriver(Browsers.chrome);
+        if (browsers.get()==null)
+            browsers.set(Browsers.chrome);
+        return getDriver(browsers.get());
     }
     public static WebDriver getDriver(Browsers browser){
+        browsers.set(browser);
         if (drivers.get() == null){
             switch (browser){
                 case firefox:
